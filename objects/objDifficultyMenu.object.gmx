@@ -316,22 +316,25 @@ else*/
             <string>for(var i = 0; i &lt; 3; i += 1)
 {
     draw_set_color(c_white)
-    draw_set_halign(fa_left)
-    draw_set_font(fDefault12);
-    
-    draw_text(x+i*xSeperation+2,y,str[i]);
-    
-    draw_set_font(fDefault12);
-    
-    draw_text(x+i*xSeperation+10,y+70,"Deaths: "+string(death[i]));
-    draw_text(x+i*xSeperation+10,y+90,"Time: "+timeStr[i]);
     
     draw_set_halign(fa_center);
-    
     draw_set_font(fDefault14);
     draw_text(400,32,"*Select Your Saved Game*")
     
+    draw_set_halign(fa_center)
     draw_set_font(fDefault12);
+    draw_text(x+i*xSeperation+64,y+4,str[i]);
+    
+    draw_set_halign(fa_left);
+    
+    draw_sprite(sprMenuNewGame,0,x+i*xSeperation,y+32)
+    
+    draw_set_font(fDefault10);
+    draw_text(x+i*xSeperation,y+132,"Playtime: "+timeStr[i]);
+    draw_text(x+i*xSeperation,y+164,"Deaths: "+string(death[i]));
+    
+
+    //draw_set_font(fDefault12);
     if (difSelect &amp;&amp; i == select)
     {
         if (!warnText)
@@ -354,13 +357,13 @@ else*/
     {        
         if ((!difSelect) || (difSelect &amp;&amp; i != select))
         {
-            if(difficulty[i]==0){draw_text(x+i*xSeperation+65,y+49,"Medium")}
-            else if(difficulty[i]==1){draw_text(x+i*xSeperation+65,y+49,"Hard")}
-            else if(difficulty[i]==2){draw_text(x+i*xSeperation+65,y+49,"Very Hard")}
-            else if(difficulty[i]==3){draw_text(x+i*xSeperation+65,y+49,"Impossible")}
+            if(difficulty[i]==0){draw_text(x+i*xSeperation,y+196,"Difficulty: Medium")}
+            else if(difficulty[i]==1){draw_text(x+i*xSeperation,y+196,"Difficulty: Hard")}
+            else if(difficulty[i]==2){draw_text(x+i*xSeperation,y+196,"Difficulty: Very Hard")}
+            else if(difficulty[i]==3){draw_text(x+i*xSeperation,y+196,"Difficulty: Impossible")}
         }
         
-        draw_set_font(fDefault24);
+        draw_set_font(fDefault10);
         
         if(clear[i]){draw_text(x+i*xSeperation+63,y+215,"Clear!!")}
         
@@ -377,7 +380,7 @@ else*/
     {
         if ((!difSelect) || (difSelect &amp;&amp; i != select))
         {
-            draw_text(x+i*xSeperation+65,y+49,"No Data");
+            draw_text(x+i*xSeperation,y+196,"Difficulty: ");
         }
     }
     /*
@@ -392,7 +395,16 @@ else*/
         draw_sprite(sprCherry,appleIndex,x+i*xSeperation+125,y+310);
     }
     */
+    
+    //draw outline
+    scrDrawRectangleOutline(x+(xSeperation+1)*i,160,x+(xSeperation+1)*i+128,192,c_gray,1);
+    for (var j = 0; j &lt; 4; j++) { //124
+        scrDrawRectangleOutline(x+(xSeperation+1)*i,y+128,x+(xSeperation+1)*i+128,y+128+j*32,c_gray,1);
+    }
 }
+
+//draw top outline
+scrDrawRectangleOutline(256,32,544,64,c_gray,1);
 
 //scrDrawButtonInfo(true);
 </string>

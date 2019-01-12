@@ -185,6 +185,7 @@
       <script>scripts\scrDrawTextOutline.gml</script>
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
+      <script>scripts\scrDrawRectangleOutline.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -193,6 +194,7 @@
     <font>fonts\fDefault18</font>
     <font>fonts\fDefault14</font>
     <font>fonts\fDefault12</font>
+    <font>fonts\fDefault10</font>
   </fonts>
   <objects name="objects">
     <objects name="world">
@@ -201,7 +203,6 @@
       <object>objects\objSmoothCamera</object>
       <object>objects\objPlayMusic</object>
       <object>objects\objTitleMenu</object>
-      <object>objects\objDifficultyMenu</object>
       <object>objects\objOptionsMenu</object>
       <object>objects\objKeyboardControlsMenu</object>
       <object>objects\objControllerMenu</object>
@@ -327,6 +328,7 @@
       <object>objects\objIntroArrow</object>
     </objects>
     <objects name="menu">
+      <object>objects\objDifficultyMenu</object>
       <object>objects\objBlack32</object>
       <object>objects\objMenu1</object>
       <object>objects\objMenu2</object>
