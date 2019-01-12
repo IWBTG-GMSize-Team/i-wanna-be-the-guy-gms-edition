@@ -95,8 +95,11 @@ if (y &lt;= abs(vspeed)) {
 }
 
 //skip intro
-if (scrButtonCheckPressed(global.jumpButton) and state == 0) {
-    event_user(0);
+if (scrButtonCheckPressed(global.jumpButton)) {
+    if (state == 0)
+        event_user(0);
+    else if (state == 1)
+        room_goto(rMenu);
 }
 
 //show menu

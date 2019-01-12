@@ -23,6 +23,7 @@
       <sound>sound\musOnDeath</sound>
       <sound>sound\musIntroA</sound>
       <sound>sound\musIntroB</sound>
+      <sound>sound\musMenu</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -133,6 +134,14 @@
       <sprite>sprites\sprIntro17</sprite>
       <sprite>sprites\sprIntro18</sprite>
     </sprites>
+    <sprites name="menu">
+      <sprite>sprites\sprBlack32</sprite>
+      <sprite>sprites\sprMenu2</sprite>
+      <sprite>sprites\sprMenu1</sprite>
+      <sprite>sprites\sprMenu4</sprite>
+      <sprite>sprites\sprMenu5</sprite>
+      <sprite>sprites\sprMenuNewGame</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -182,6 +191,7 @@
     <font>fonts\fDefault30</font>
     <font>fonts\fDefault24</font>
     <font>fonts\fDefault18</font>
+    <font>fonts\fDefault14</font>
     <font>fonts\fDefault12</font>
   </fonts>
   <objects name="objects">
@@ -315,6 +325,14 @@
       <object>objects\objIntro18</object>
       <object>objects\objIntroStart</object>
       <object>objects\objIntroArrow</object>
+    </objects>
+    <objects name="menu">
+      <object>objects\objBlack32</object>
+      <object>objects\objMenu1</object>
+      <object>objects\objMenu2</object>
+      <object>objects\objMenu3</object>
+      <object>objects\objMenu4</object>
+      <object>objects\objMenu5</object>
     </objects>
   </objects>
   <rooms name="rooms">

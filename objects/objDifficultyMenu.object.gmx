@@ -31,9 +31,9 @@ difSelect = false;
 select = global.menuSelectPrev[0];
 select2 = 0;
 xSeperation = 239;
-str[0] = "Save 1";
-str[1] = "Save 2";
-str[2] = "Save 3";
+str[0] = "SAVE GAME 1";
+str[1] = "SAVE GAME 2";
+str[2] = "SAVE GAME 3";
 warnText = false;
 warnSelect = true;
 
@@ -149,13 +149,13 @@ for (var i = 0; i &lt; 3; i++)
             <string>//animate select sprites
 appleIndex = (appleIndex + 1/15) mod 2;
 playerIndex = (playerIndex + 1/5) mod 4;
-
+/*
 if (scrButtonCheckPressed(global.menuOptionsButton))
 {
     global.menuSelectPrev[0] = select;
     room_goto(rOptions);
 }
-else
+else*/
 {
     if (!difSelect)
     {
@@ -173,11 +173,13 @@ else
             if (select &gt; 2)
                 select = 0;
         }
+        /*
         else if (scrButtonCheckPressed(global.menuBackButton))
         {
             global.menuSelectPrev[0] = 0;
             room_goto(rTitle);  //go back
         }
+        */
         else if (scrButtonCheckPressed(global.menuAcceptButton))
         {
             if (global.menuMode == 0)   //use the difficulty select room to select difficulty
@@ -313,9 +315,9 @@ else
             <kind>1</kind>
             <string>for(var i = 0; i &lt; 3; i += 1)
 {
-    draw_set_color(c_black)
+    draw_set_color(c_white)
     draw_set_halign(fa_left)
-    draw_set_font(fDefault30);
+    draw_set_font(fDefault12);
     
     draw_text(x+i*xSeperation+2,y,str[i]);
     
@@ -326,6 +328,10 @@ else
     
     draw_set_halign(fa_center);
     
+    draw_set_font(fDefault14);
+    draw_text(400,32,"*Select Your Saved Game*")
+    
+    draw_set_font(fDefault12);
     if (difSelect &amp;&amp; i == select)
     {
         if (!warnText)
@@ -374,7 +380,7 @@ else
             draw_text(x+i*xSeperation+65,y+49,"No Data");
         }
     }
-    
+    /*
     if (i == select)
     {
         draw_sprite(sprCherry,appleIndex,x+i*xSeperation+5,y+310);
@@ -385,9 +391,10 @@ else
         draw_sprite(sprCherry,appleIndex,x+i*xSeperation+105,y+310);
         draw_sprite(sprCherry,appleIndex,x+i*xSeperation+125,y+310);
     }
+    */
 }
 
-scrDrawButtonInfo(true);
+//scrDrawButtonInfo(true);
 </string>
           </argument>
         </arguments>
