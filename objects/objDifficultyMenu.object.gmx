@@ -397,9 +397,10 @@ else*/
     */
     
     //draw outline
-    scrDrawRectangleOutline(x+(xSeperation+1)*i,160,x+(xSeperation+1)*i+128,192,c_gray,1);
+    var xp = (i == 1) * 2;
+    scrDrawRectangleOutline(x+(xSeperation+1)*i-1,160,x+(xSeperation+1)*i+128+xp,192,c_gray,1);
     for (var j = 0; j &lt; 4; j++) { //124
-        scrDrawRectangleOutline(x+(xSeperation+1)*i,y+128,x+(xSeperation+1)*i+128,y+128+j*32,c_gray,1);
+        scrDrawRectangleOutline(x+(xSeperation+1)*i-1,y+128,x+(xSeperation+1)*i+128+xp,y+128+j*32,c_gray,1);
     }
 }
 
