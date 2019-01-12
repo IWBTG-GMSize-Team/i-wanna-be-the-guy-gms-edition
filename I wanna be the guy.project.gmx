@@ -140,6 +140,7 @@
       <sprite>sprites\sprMenu1</sprite>
       <sprite>sprites\sprMenu4</sprite>
       <sprite>sprites\sprMenu5</sprite>
+      <sprite>sprites\sprMenu6</sprite>
       <sprite>sprites\sprMenuNewGame</sprite>
     </sprites>
   </sprites>
@@ -195,6 +196,8 @@
     <font>fonts\fDefault14</font>
     <font>fonts\fDefault12</font>
     <font>fonts\fDefault10</font>
+    <font>fonts\fItalic9</font>
+    <font>fonts\fArial10</font>
   </fonts>
   <objects name="objects">
     <objects name="world">
