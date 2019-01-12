@@ -47,6 +47,11 @@ if (savePosition)
     }
     
     global.saveGameClear = global.gameClear;
+    
+    //screenshot
+    if (sprite_exists(global.screenshot))
+        sprite_delete(global.screenshot);
+    global.screenshot = sprite_create_from_surface(application_surface,0,0,800,608,0,0,0,0);
 }
 
 //create a map for save data

@@ -30,7 +30,7 @@
 difSelect = false;
 select = global.menuSelectPrev[0];
 select2 = 0;
-select3 = 0;
+select3 = 1;
 xSeperation = 239;
 str[0] = "SAVE GAME 1";
 str[1] = "SAVE GAME 2";
@@ -113,6 +113,12 @@ for (var i = 0; i &lt; 3; i++)
         death[i] = 0;
         time[i] = 0;
     }
+    //load screenshot
+    if (file_exists("Data\save"+string(i+1)+".png"))
+    {
+        screen[i] = sprite_add("Data\save"+string(i+1)+".png",0,0,0,0,0);
+    }
+    else screen[i] = -1;
     
     var t = time[i];
     show_debug_message(t);
@@ -168,7 +174,7 @@ if (!difSelect)
             select = 0;
     }
     
-    if (scrButtonCheckPressed(global.menuAcceptButton))
+    else if (scrButtonCheckPressed(global.menuAcceptButton))
     {
         select2 = 0;
         difSelect = true;
@@ -179,9 +185,9 @@ else
     if (scrButtonCheckPressed(global.menuBackButton))
     {
         difSelect = false;
-        select3 = 0;
+        select3 = 1;
     }
-    if (scrButtonCheckPressed(global.menuUpButton) or scrButtonCheckPressed(global.menuDownButton))
+    else if (scrButtonCheckPressed(global.menuUpButton) or scrButtonCheckPressed(global.menuDownButton))
     {
         select2 = !select2;
     }
@@ -189,21 +195,67 @@ else
     if (select2 == 1)
     {
         //choose a difficulty
-        if (scrButtonCheckPressed(global.menuLeftButton) and select3 != 3)
+        if (scrButtonCheckPressed(global.menuLeftButton) and select3 != 0)
         {
             select3 -= 1;
             if (select3 &lt; 0)
                 select3 = 3;
         }
-        else if (scrButtonCheckPressed(global.menuRightButton) and select3 != 2)
+        else if (scrButtonCheckPressed(global.menuRightButton) and select3 != 3)
         {
             select3 += 1;
             if (select3 &gt; 3)
                 select3 = 0;
         }
+        else if(scrButtonCheckPressed(global.menuAcceptButton))
+        {
+            //start new game
+            global.gameStarted = true; //sets game in progress (enables saving, restarting, etc.)
+            global.autosave = true;
+            
+            global.difficulty = select3;
+            
+            if(file_exists("Data\save"+string(global.savenum)))
+                file_delete("Data\save"+string(global.savenum));
+        
+            room_goto(global.startRoom);
+        }
+    }
+    else { //load game
+        if(scrButtonCheckPressed(global.menuAcceptButton))
+        {
+            if (file_exists("Data\save"+string(global.savenum)))
+                scrLoadGame(true);
+        }
     }
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (var i = 0; i &lt; 3; i++)
+{
+    if (sprite_exists(screen[i])) sprite_delete(screen[i]);
+}
 </string>
           </argument>
         </arguments>
@@ -251,7 +303,18 @@ for(var i = 0; i &lt; 3; i += 1)
     //new game picture
     if (!difSelect or i != select)
     {
-        draw_sprite(sprMenuNewGame,0,x+i*xSeperation,y+32);
+        if (screen[i] != -1) {
+            if (i != select) {
+                shader_set(shdBlackWhite);
+                draw_sprite_stretched(screen[i], 0, x+i*xSeperation, y+32, 128, 96);
+                shader_reset();
+            }
+            else {
+                draw_sprite_stretched(screen[i], 0, x+i*xSeperation, y+32, 128, 96);
+            }
+        }
+        else
+            draw_sprite(sprMenuNewGame,0,x+i*xSeperation,y+32);
     }
     else
     {
@@ -264,12 +327,12 @@ for(var i = 0; i &lt; 3; i += 1)
         
         var difStr = "";
         switch (select3) {
-            case 0: difStr = "&lt;-(Hard)"; break;
-            case 1: difStr = "&lt;-(Very Hard)"; break;
-            case 2: difStr = "&lt;-(Impossible)"; break;
-            case 3: difStr = "&lt;-(Medium)"; break;
+            case 1: difStr = "&lt;-(Hard)"; break;
+            case 2: difStr = "&lt;-(Very Hard)"; break;
+            case 3: difStr = "&lt;-(Impossible)"; break;
+            case 0: difStr = "&lt;-(Medium)"; break;
         }
-        if (select3 != 2) difStr += "-&gt;";
+        if (select3 != 3) difStr += "-&gt;";
         draw_text(x+xSeperation*i+80,y+88,difStr);
         //arrow
         draw_sprite(sprIntroArrow,arrowIndex,x+xSeperation*i+8,y+32+select2*32+8)

@@ -189,6 +189,9 @@
       <script>scripts\scrDrawRectangleOutline.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSL">shaders\shdBlackWhite.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
     <font>fonts\fDefault24</font>
