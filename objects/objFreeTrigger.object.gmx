@@ -28,6 +28,11 @@
             <string>//set trg in creation code
 
 trg = 0;
+
+if (debug_mode)
+{
+    visible = true;
+}
 </string>
           </argument>
         </arguments>

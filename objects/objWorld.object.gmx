@@ -214,7 +214,7 @@ if (global.gameStarted)
             }
             
             scrSaveGame(false); //save death/time
-            scrLoadGame(false); //load the game
+            scrLoadGame(false); //load the game //default was false
         }
         
         if (global.timeWhenDead || instance_exists(objPlayer))  //increment timer
@@ -241,6 +241,63 @@ if (global.gameStarted)
     }
     
     scrSetRoomCaption();    //keep caption updated
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///function keys
+
+if (keyboard_check_pressed(vk_escape))
+{
+    game_end();
+}
+
+if (keyboard_check_pressed(vk_f2))
+{
+    if (global.gameStarted and global.screenshot != -1) {
+        sprite_save(global.screenshot,0,"Data\save"+string(global.savenum)+".png");
+    }
+    scrRestartGame();
+    exit;
+}
+
+if (keyboard_check_pressed(vk_f4) &amp;&amp; !global.gamePaused)    //toggle fullscreen mode
+{
+    global.fullscreenMode = !global.fullscreenMode;
+    
+    window_set_fullscreen(global.fullscreenMode);
+    
+    scrSaveConfig();    //save fullscreen setting
+}
+
+if (keyboard_check_pressed(vk_f5) &amp;&amp; !global.gamePaused)    //reset window size
+{
+    scrResetWindowSize();
+}
+
+if (keyboard_check(vk_control) &amp;&amp; keyboard_check_pressed(ord("M")) &amp;&amp; !global.gamePaused)
+{
+    //toggle mute music setting
+    scrToggleMusic();
+    
+    scrSaveConfig();    //save mute setting
 }
 </string>
           </argument>
@@ -349,43 +406,8 @@ if (global.debugVisuals)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///function keys
-
-if (keyboard_check_pressed(vk_escape))
-{
-    game_end();
-}
-
-if (keyboard_check_pressed(vk_f2))
-{
-    if (global.gameStarted and global.screenshot != -1) {
-        sprite_save(global.screenshot,0,"Data\save"+string(global.savenum)+".png");
-    }
-    scrRestartGame();
-    exit;
-}
-
-if (keyboard_check_pressed(vk_f4) &amp;&amp; !global.gamePaused)    //toggle fullscreen mode
-{
-    global.fullscreenMode = !global.fullscreenMode;
-    
-    window_set_fullscreen(global.fullscreenMode);
-    
-    scrSaveConfig();    //save fullscreen setting
-}
-
-if (keyboard_check_pressed(vk_f5) &amp;&amp; !global.gamePaused)    //reset window size
-{
-    scrResetWindowSize();
-}
-
-if (keyboard_check(vk_control) &amp;&amp; keyboard_check_pressed(ord("M")) &amp;&amp; !global.gamePaused)
-{
-    //toggle mute music setting
-    scrToggleMusic();
-    
-    scrSaveConfig();    //save mute setting
-}
+            <string>///room checks
+scrChangeBackground(global.backgroundIndex);
 </string>
           </argument>
         </arguments>
@@ -443,6 +465,8 @@ if (!instance_exists(objPlayMusic))  //make sure the play music object isn't in 
 
 room_speed = 50;    //make sure game is running at the correct frame rate
 scrSetRoomCaption();    //make sure window caption stays updated
+
+
 </string>
           </argument>
         </arguments>

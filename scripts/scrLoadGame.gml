@@ -36,6 +36,7 @@ if (loadFile)
         global.savePlayerX = ds_map_find_value(saveMap,"savePlayerX");
         global.savePlayerY = ds_map_find_value(saveMap,"savePlayerY");
         global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
+        global.saveBackgroundIndex = ds_map_find_value(saveMap, "saveBackgroundIndex");
         
         if (is_string(global.saveRoom))   //check if the saved room loaded properly
         {
@@ -116,6 +117,8 @@ for (var i = 0; i < global.bossItemTotal; i++)
 }
 
 global.gameClear = global.saveGameClear;
+
+global.backgroundIndex = global.saveBackgroundIndex;
 
 instance_create(global.savePlayerX,global.savePlayerY,objPlayer);
 

@@ -14,6 +14,9 @@ global.grav = 1;
 global.saveGrav = 1;
 global.screenshot = -1;
 
+global.backgroundIndex = 0;
+global.saveBackgroundIndex = 0;
+
 for (var i = global.secretItemTotal-1; i >= 0; i--)
 {
     global.secretItem[i] = false;

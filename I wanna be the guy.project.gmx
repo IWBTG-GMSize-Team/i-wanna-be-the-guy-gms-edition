@@ -20,6 +20,7 @@
     </sounds>
     <sounds name="music">
       <sound>sound\musTitle</sound>
+      <sound>sound\musStage1</sound>
       <sound>sound\musOnDeath</sound>
       <sound>sound\musIntroA</sound>
       <sound>sound\musIntroB</sound>
@@ -32,6 +33,8 @@
       <sprite>sprites\sprPlayMusic</sprite>
       <sprite>sprites\sprPlayerKiller</sprite>
       <sprite>sprites\sprPlayerStart</sprite>
+      <sprite>sprites\sprBackgroundSplitLineUpDown</sprite>
+      <sprite>sprites\sprTree</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sprPlayerMask</sprite>
@@ -139,13 +142,15 @@
       <sprite>sprites\sprMenu2</sprite>
       <sprite>sprites\sprMenu1</sprite>
       <sprite>sprites\sprMenu4</sprite>
-      <sprite>sprites\sprMenu5</sprite>
       <sprite>sprites\sprMenu6</sprite>
       <sprite>sprites\sprMenuNewGame</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
+    <background>background\bgGray</background>
+    <background>background\bgAqua</background>
+    <background>background\bgUpsideWayRoom1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -163,7 +168,9 @@
       <script>scripts\scrSaveConfig.gml</script>
       <script>scripts\scrLoadConfig.gml</script>
       <script>scripts\scrSaveGame.gml</script>
+      <script>scripts\scrSaveGameBackup.gml</script>
       <script>scripts\scrLoadGame.gml</script>
+      <script>scripts\scrLoadGameBackup.gml</script>
       <script>scripts\scrSetRoomCaption.gml</script>
       <script>scripts\scrDrawButtonInfo.gml</script>
       <script>scripts\scrGetKeybind.gml</script>
@@ -181,6 +188,7 @@
         <script>scripts\scrButtonCheckPressed.gml</script>
         <script>scripts\scrButtonCheckReleased.gml</script>
       </scripts>
+      <script>scripts\scrChangeBackground.gml</script>
     </scripts>
     <scripts name="functions">
       <script>scripts\scrDrawTextOutline.gml</script>
@@ -267,6 +275,7 @@
     </objects>
     <objects name="triggers">
       <object>objects\objFreeTrigger</object>
+      <object>objects\objBackgroundSplitterUpDown</object>
       <object>objects\objTriggerButton</object>
       <object>objects\objKillerTrigger</object>
       <object>objects\objSpikeTriggerUp</object>
@@ -285,6 +294,7 @@
       <object>objects\objSign</object>
       <object>objects\objGravityUp</object>
       <object>objects\objGravityDown</object>
+      <object>objects\objTree</object>
     </objects>
     <objects name="saves">
       <object>objects\objSaveMedium</object>
@@ -354,6 +364,9 @@
     </rooms>
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTemplate</room>
+    <rooms name="Upside Road">
+      <room>rooms\rARoom1</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
